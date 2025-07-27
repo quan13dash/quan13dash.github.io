@@ -4,22 +4,75 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Blog Page</title>
+  
+  <!-- Google Fonts: Outfit -->
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
+  
   <style>
-    body {
-      font-family: Outfit, sans-serif;
-      margin: 40px;
-      background-color: #f9f9f9;
-      color: #333;
+    :root {
+      --bg-color: #f9f9f9;
+      --text-color: #333;
+      --button-bg: #e0e0e0;
+      --button-text: #333;
     }
+
+    [data-theme="dark"] {
+      --bg-color: #121212;
+      --text-color: #f0f0f0;
+      --button-bg: #333;
+      --button-text: #f0f0f0;
+    }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      margin: 40px;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
     h1, h2 {
       text-align: center;
+    }
+
+    .theme-toggle {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    .theme-toggle button {
+      padding: 10px 20px;
+      font-size: 16px;
+      font-family: 'Outfit', sans-serif;
+      background-color: var(--button-bg);
+      color: var(--button-text);
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, color 0.3s ease;
     }
   </style>
 </head>
 <body>
 
-  <h1>Welcome to quan13dash page!</h1>
-  <h2>I'm a bored dev and a player.</h2>
+  <h1>Welcome to quan13dash page</h1>
+  <h2>Hello =) I'm a dev (mid-noob - bored) and a player too.</h2>
+
+  <div class="theme-toggle">
+    <button id="themeToggleBtn">Switch to Night Mode</button>
+  </div>
+
+  <script>
+    const toggleBtn = document.getElementById('themeToggleBtn');
+    let isDark = false;
+
+    toggleBtn.addEventListener('click', () => {
+      isDark = !isDark;
+      document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
+      toggleBtn.textContent = isDark ? 'Switch to Day Mode' : 'Switch to Night Mode';
+    });
+  </script>
 
 </body>
 </html>
