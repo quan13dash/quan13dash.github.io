@@ -1,1 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About - quan13dash</title>
 
+  <!-- Google Fonts: Outfit -->
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-color: #f9f9f9;
+      --text-color: #333;
+      --button-bg: transparent;
+      --button-text: #333;
+      --border-color: #ccc;
+    }
+
+    [data-theme="dark"] {
+      --bg-color: #121212;
+      --text-color: #f0f0f0;
+      --button-text: #f0f0f0;
+      --border-color: #444;
+    }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      margin: 40px;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      transition: background-color 0.3s ease, color 0.3s ease;
+      position: relative;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    .top-bar {
+      position: absolute;
+      top: 20px;
+      width: calc(100% - 40px);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 20px;
+    }
+
+    .theme-toggle button,
+    .menu-toggle button {
+      font-size: 20px;
+      background-color: var(--button-bg);
+      color: var(--button-text);
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      padding: 8px 12px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .theme-toggle button:hover,
+    .menu-toggle button:hover {
+      background-color: var(--border-color);
+    }
+
+    .menu-dropdown {
+      position: absolute;
+      top: 55px;
+      left: 20px;
+      background-color: var(--bg-color);
+      border: 1px solid var(--border-color);
+      border-radius: 5px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      display: none;
+    }
+
+    .menu-dropdown a {
+      display: block;
+      padding: 10px 15px;
+      text-decoration: none;
+      color: var(--text-color);
+      font-weight: 600;
+      transition: background-color 0.3s ease;
+    }
+
+    .menu-dropdown a:hover {
+      background-color: var(--border-color);
+    }
+
+    .menu-dropdown a.active {
+      background-color: var(--border-color);
+      font-weight: bold;
+    }
+
+    p {
+      max-width: 700px;
+      margin: 40px auto;
+      line-height: 1.6;
+      font-size: 18px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="top-bar">
+    <!-- Menu -->
+    <div class="menu-toggle">
+      <button id="menuBtn" title="Menu">☰</button>
+      <div class="menu-dropdown" id="menuDropdown">
+        <a href="/">Home</a>
+        <a href="/about.html" class="active">About</a>
+      </div>
+    </div>
+
+    <!-- Theme Switcher -->
+    <div class="theme-toggle">
+      <button id="themeToggleBtn" title="Toggle Theme">🌙</button>
+    </div>
+  </div>
+
+  <h1>About me:</h1>
+
+  <p>    
+    Hello!<br>
+    I'm a normal people<br>
+    From: Viet Nam<br>
+    Nationalty: Vietnamese<br>
+    Timezone: UTC+7 (Indochina Time - ICT)<br>
+    Pronouns: Wal/Mart/Bag - Shadow/Milk/Cookie (really He/His/Him)<br>
+    I'm [BLOCKED]<br>
+    A mid-noob dev (bored too)<br>
+    CEO of JamTube - Jammerube<br>
+    Interested at FYSC<br>
+    LCEdit top 1<br>
+    Fav games: Geometry Dash - Roblox (Dandy's World)(Grow a Garden) - Keep Talking and Nobody Explodes - Cookie Run: Kingdom/Tower of Adventures<br>
+    8 CPS Spam (lol)<br>
+  </p>
+
+  <script>
+    // Theme toggle logic
+    const toggleBtn = document.getElementById('themeToggleBtn');
+    let isDark = false;
+
+    toggleBtn.addEventListener('click', () => {
+      isDark = !isDark;
+      document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
+      toggleBtn.textContent = isDark ? '☀️' : '🌙';
+    });
+
+    // Menu toggle logic
+    const menuBtn = document.getElementById('menuBtn');
+    const menuDropdown = document.getElementById('menuDropdown');
+    let menuVisible = false;
+
+    menuBtn.addEventListener('click', () => {
+      menuVisible = !menuVisible;
+      menuDropdown.style.display = menuVisible ? 'block' : 'none';
+    });
+
+    // Optional: Close dropdown if clicked outside
+    document.addEventListener('click', (e) => {
+      if (!menuBtn.contains(e.target) && !menuDropdown.contains(e.target)) {
+        menuDropdown.style.display = 'none';
+        menuVisible = false;
+      }
+    });
+  </script>
+
+</body>
+</html>
