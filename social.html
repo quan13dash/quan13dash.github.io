@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Social Media ye</title>
+
+  <!-- Google Fonts: Outfit -->
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-color: #f9f9f9;
+      --text-color: #333;
+      --button-bg: transparent;
+      --button-text: #333;
+      --border-color: #ccc;
+    }
+
+    [data-theme="dark"] {
+      --bg-color: #121212;
+      --text-color: #f0f0f0;
+      --button-text: #f0f0f0;
+      --border-color: #444;
+    }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      margin: 40px;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      transition: background-color 0.3s ease, color 0.3s ease;
+      position: relative;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    .top-bar {
+      position: absolute;
+      top: 20px;
+      width: calc(100% - 40px);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 20px;
+    }
+
+    .theme-toggle button,
+    .menu-toggle button {
+      font-size: 20px;
+      background-color: var(--button-bg);
+      color: var(--button-text);
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      padding: 8px 12px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .theme-toggle button:hover,
+    .menu-toggle button:hover {
+      background-color: var(--border-color);
+    }
+
+    .menu-dropdown {
+      position: absolute;
+      top: 55px;
+      left: 20px;
+      background-color: var(--bg-color);
+      border: 1px solid var(--border-color);
+      border-radius: 5px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      display: none;
+    }
+
+    .menu-dropdown a {
+      display: block;
+      padding: 10px 15px;
+      text-decoration: none;
+      color: var(--text-color);
+      font-weight: 600;
+      transition: background-color 0.3s ease;
+    }
+
+    .menu-dropdown a:hover {
+      background-color: var(--border-color);
+    }
+
+    .menu-dropdown a.active {
+      background-color: var(--border-color);
+      font-weight: bold;
+    }
+
+    .social-links {
+      max-width: 700px;
+      margin: 40px auto;
+      font-size: 18px;
+      text-align: center;
+    }
+
+    .social-links a {
+      display: inline-block;
+      margin: 10px 20px;
+      text-decoration: none;
+      color: var(--text-color);
+      font-weight: 600;
+      border: 1px solid var(--border-color);
+      padding: 10px 20px;
+      border-radius: 6px;
+      transition: background-color 0.3s ease;
+    }
+
+    .social-links a:hover {
+      background-color: var(--border-color);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="top-bar">
+    <!-- Menu -->
+    <div class="menu-toggle">
+      <button id="menuBtn" title="Menu">☰</button>
+      <div class="menu-dropdown" id="menuDropdown">
+        <a href="/">Home</a>
+        <a href="/about.html">About</a>
+        <a href="/social.html" class="active">Social</a>
+      </div>
+    </div>
+
+    <!-- Theme Switcher -->
+    <div class="theme-toggle">
+      <button id="themeToggleBtn" title="Toggle Theme">🌙</button>
+    </div>
+  </div>
+
+  <h1>Socials:</h1>
+
+  <div class="social-links">
+    <!-- Example placeholder links - edit or replace them -->
+    <a href="https://github.com/quan13dash" target="_blank">GitHub</a>
+    <a href="https://www.youtube.com/@Quan13Dash" target="_blank">YouTube</a>
+    <a href="https://tiktok.com/@quan13dash" target="_blank">TikTok</a>
+    <a href="https://x.com/Quan2K13Dash" target="_blank">X</a>
+    <a href="https://discord.gg/YkXz6veNVk" target="_blank">Discord Server</a>
+  </div>
+
+  <script>
+    // Theme toggle
+    const toggleBtn = document.getElementById('themeToggleBtn');
+    let isDark = false;
+
+    toggleBtn.addEventListener('click', () => {
+      isDark = !isDark;
+      document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
+      toggleBtn.textContent = isDark ? '☀️' : '🌙';
+    });
+
+    // Menu toggle
+    const menuBtn = document.getElementById('menuBtn');
+    const menuDropdown = document.getElementById('menuDropdown');
+    let menuVisible = false;
+
+    menuBtn.addEventListener('click', () => {
+      menuVisible = !menuVisible;
+      menuDropdown.style.display = menuVisible ? 'block' : 'none';
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!menuBtn.contains(e.target) && !menuDropdown.contains(e.target)) {
+        menuDropdown.style.display = 'none';
+        menuVisible = false;
+      }
+    });
+  </script>
+
+</body>
+</html>
