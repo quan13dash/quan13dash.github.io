@@ -12,14 +12,13 @@
     :root {
       --bg-color: #f9f9f9;
       --text-color: #333;
-      --button-bg: #e0e0e0;
+      --button-bg: transparent;
       --button-text: #333;
     }
 
     [data-theme="dark"] {
       --bg-color: #121212;
       --text-color: #f0f0f0;
-      --button-bg: #333;
       --button-text: #f0f0f0;
     }
 
@@ -29,6 +28,7 @@
       background-color: var(--bg-color);
       color: var(--text-color);
       transition: background-color 0.3s ease, color 0.3s ease;
+      position: relative;
     }
 
     h1, h2 {
@@ -36,32 +36,29 @@
     }
 
     .theme-toggle {
-      display: flex;
-      justify-content: center;
-      margin-top: 20px;
+      position: absolute;
+      top: 20px;
+      right: 20px;
     }
 
     .theme-toggle button {
-      padding: 10px 20px;
-      font-size: 16px;
-      font-family: 'Outfit', sans-serif;
-      background-color: var(--button-bg);
-      color: var(--button-text);
+      font-size: 24px;
+      background: none;
       border: none;
-      border-radius: 5px;
       cursor: pointer;
-      transition: background-color 0.3s ease, color 0.3s ease;
+      color: var(--button-text);
+      transition: color 0.3s ease;
     }
   </style>
 </head>
 <body>
 
+  <div class="theme-toggle">
+    <button id="themeToggleBtn" title="Toggle Theme">🌙</button>
+  </div>
+
   <h1>Welcome to quan13dash page</h1>
   <h2>Hello =) I'm a dev (mid-noob - bored) and a player too.</h2>
-
-  <div class="theme-toggle">
-    <button id="themeToggleBtn">Switch to Night Mode</button>
-  </div>
 
   <script>
     const toggleBtn = document.getElementById('themeToggleBtn');
@@ -70,7 +67,7 @@
     toggleBtn.addEventListener('click', () => {
       isDark = !isDark;
       document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
-      toggleBtn.textContent = isDark ? 'Switch to Day Mode' : 'Switch to Night Mode';
+      toggleBtn.textContent = isDark ? '☀️' : '🌙';
     });
   </script>
 
