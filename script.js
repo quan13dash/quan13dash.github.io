@@ -79,3 +79,35 @@
     });
   }
 })();
+
+/* Profile history modal behaviour — only initialize on the profile history page */
+(function(){
+  if(!document.querySelector('.profile-history-page')) return;
+  document.addEventListener('DOMContentLoaded',()=>{
+    const modal=document.getElementById('pfp-modal');
+    const modalImg=document.getElementById('modal-img');
+    const modalCaption=document.getElementById('modal-caption');
+    const closeBtn=document.getElementById('modal-close');
+
+    document.querySelectorAll('.timeline .entry img').forEach(img=>{
+      img.addEventListener('click',()=>{
+        modalImg.src=img.src;
+        modalImg.alt=img.alt;
+        const meta=img.closest('.entry')?.querySelector('.meta')?.textContent||'';
+        modalCaption.textContent=meta;
+        modal.setAttribute('aria-hidden','false');
+        document.body.style.overflow='hidden';
+      });
+    });
+
+    function closeModal(){
+      modal.setAttribute('aria-hidden','true');
+      document.body.style.overflow='';
+      modalImg.src='';
+    }
+
+    if(closeBtn) closeBtn.addEventListener('click',closeModal);
+    if(modal) modal.addEventListener('click',(e)=>{if(e.target===modal)closeModal();});
+    document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
+  });
+})();

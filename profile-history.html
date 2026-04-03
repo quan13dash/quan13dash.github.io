@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Profile Picture History — Quan13Dash</title>
+  <link rel="stylesheet" href="assets/css/profile-history.css">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav container">
+      <a class="brand" href="/">Quan13Dash GitHub</a>
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="profile-history.html" aria-current="page">Profile Pics</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="container profile-history-page">
+    <h1>Profile Picture History</h1>
+    <p class="lead">A short timeline showing how my profile picture changed over time.</p>
+
+    <section class="timeline" id="timeline">
+      <article class="entry" data-date="2018-06-01">
+        <img src="assets/images/pfp-2018.svg" alt="Profile picture 2018" />
+        <div class="meta">June 2018 — Early pixel me</div>
+      </article>
+
+      <article class="entry" data-date="2020-09-15">
+        <img src="assets/images/pfp-2020.svg" alt="Profile picture 2020" />
+        <div class="meta">Sept 2020 — experimenting with color</div>
+      </article>
+
+      <article class="entry" data-date="2024-03-10">
+        <img src="assets/images/pfp-2024.svg" alt="Profile picture 2024" />
+        <div class="meta">Mar 2024 — current avatar</div>
+      </article>
+    </section>
+  </main>
+
+  <div id="pfp-modal" class="modal" aria-hidden="true">
+    <div class="modal-inner">
+      <button id="modal-close" class="modal-close" aria-label="Close">✕</button>
+      <img id="modal-img" src="" alt="">
+      <div id="modal-caption" class="modal-caption"></div>
+    </div>
+  </div>
+
+  <script src="script.js" defer></script>
+</body>
+</html>

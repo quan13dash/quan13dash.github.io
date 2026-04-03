@@ -96,3 +96,21 @@ body::before{
   .nav-toggle{display:block;margin-left:auto}
   .theme-toggle{margin-left:0}
 }
+
+/* Profile History page styles (namespaced to .profile-history-page) */
+.profile-history-page{padding:32px 0}
+.profile-history-page .timeline{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
+.profile-history-page .entry{background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);border:1px solid rgba(255,255,255,0.04);padding:12px;border-radius:10px;display:flex;flex-direction:column;align-items:center}
+.profile-history-page .entry img{width:160px;height:160px;object-fit:cover;border-radius:50%;border:6px solid rgba(255,255,255,0.03);box-shadow:0 6px 20px rgba(2,6,23,0.6);cursor:pointer;transition:transform .18s}
+.profile-history-page .entry img:hover{transform:translateY(-6px) scale(1.02)}
+.profile-history-page .entry .meta{margin-top:10px;color:var(--muted);font-size:0.9rem}
+
+/* Modal (scoped) */
+.profile-history-page #pfp-modal{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(2,6,23,0.65);backdrop-filter:blur(4px);visibility:hidden;opacity:0;transition:opacity .18s,visibility .18s}
+.profile-history-page #pfp-modal[aria-hidden="false"]{visibility:visible;opacity:1}
+.profile-history-page .modal-inner{background:var(--card-bg);padding:18px;border-radius:12px;max-width:92vw;max-height:92vh;display:flex;flex-direction:column;align-items:center}
+.profile-history-page .modal-inner img{max-width:min(70vw,500px);max-height:70vh;border-radius:6px}
+.profile-history-page .modal-caption{color:var(--muted);margin-top:10px}
+.profile-history-page .modal-close{position:absolute;top:14px;right:18px;background:transparent;border:0;color:var(--muted);font-size:1.1rem;cursor:pointer}
+
+@media (max-width:600px){.profile-history-page .entry img{width:120px;height:120px}}
