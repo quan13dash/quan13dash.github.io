@@ -100,6 +100,23 @@
       });
     });
 
+    // Details button: placeholder for future detail panel. Opens modal with a "details coming" caption.
+    document.querySelectorAll('.details-btn').forEach(btn=>{
+      btn.addEventListener('click', (e)=>{
+        e.stopPropagation();
+        const entry = btn.closest('.entry');
+        const img = entry?.querySelector('img');
+        const meta = entry?.querySelector('.meta')?.textContent || '';
+        if(img){
+          modalImg.src = img.src;
+          modalImg.alt = img.alt;
+          modalCaption.textContent = meta + ' — Details coming soon.';
+          modal.setAttribute('aria-hidden','false');
+          document.body.style.overflow='hidden';
+        }
+      });
+    });
+
     function closeModal(){
       modal.setAttribute('aria-hidden','true');
       document.body.style.overflow='';
