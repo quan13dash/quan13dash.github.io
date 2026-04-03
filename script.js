@@ -89,16 +89,7 @@
     const modalCaption=document.getElementById('modal-caption');
     const closeBtn=document.getElementById('modal-close');
 
-    document.querySelectorAll('.timeline .entry img').forEach(img=>{
-      img.addEventListener('click',()=>{
-        modalImg.src=img.src;
-        modalImg.alt=img.alt;
-        const meta=img.closest('.entry')?.querySelector('.meta')?.textContent||'';
-        modalCaption.textContent=meta;
-        modal.setAttribute('aria-hidden','false');
-        document.body.style.overflow='hidden';
-      });
-    });
+    // image click-to-open removed: images are now non-clickable; use Details button instead
 
     // Details button: placeholder for future detail panel. Opens modal with a "details coming" caption.
     document.querySelectorAll('.details-btn').forEach(btn=>{
