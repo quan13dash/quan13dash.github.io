@@ -102,5 +102,10 @@
     if(closeBtn) closeBtn.addEventListener('click',closeModal);
     if(modal) modal.addEventListener('click',(e)=>{if(e.target===modal)closeModal();});
     document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
+
+    // details buttons are inert here by design
   });
 })();
+
+// Fill download inputs with absolute URLs and wire download buttons
+// No global download-input population — per-page links are static. Keep code minimal.

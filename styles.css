@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,slnt,wdth,wght,GRAD,ROND@6..144,-10..0,25..151,1..1000,0..100,0..100&display=swap');
+
 :root{
   --bg-1: #ffecd2;
   --bg-2: #fcb69f;
@@ -5,6 +7,7 @@
   --muted: #334155;
   --card-bg: rgba(255,255,255,0.75);
   --glass: rgba(255,255,255,0.35);
+  --ui-font: 'Google Sans Flex', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
 }
 
 @media (prefers-color-scheme: dark){
@@ -37,7 +40,7 @@ html[data-theme="light"]{
 *{box-sizing:border-box}
 body{
   margin:0;
-  font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  font-family: var(--ui-font);
   color:var(--text);
   background: linear-gradient(135deg,var(--bg-1),var(--bg-2));
   transition: background 900ms ease, color 250ms linear;
@@ -70,11 +73,19 @@ body::before{
 .container{max-width:1000px;margin:0 auto;padding:1rem}
 
 .nav{display:flex;align-items:center;gap:1rem;padding:.75rem 0}
-.brand{font-weight:700;text-decoration:none;color:var(--text);font-size:1.125rem}
+.brand{font-weight:700;text-decoration:none;color:var(--text);font-size:1.125rem;font-variation-settings: "ROND" 25, "wdth" 136;}
 .nav-links{list-style:none;margin:0;padding:0;display:flex;gap:.75rem}
 .nav-links a{color:var(--text);text-decoration:none;padding:.25rem .5rem;border-radius:6px}
 .nav-toggle{display:none;background:transparent;border:0;font-size:1.25rem}
 .theme-toggle{margin-left:auto;background:transparent;border:0;font-size:1.1rem}
+
+/* Tweaks */
+.nav-links{font-variation-settings: "wdth" 123}
+.site-footer p{font-variation-settings: "slnt" -5, "wdth" 67}
+.profile-history-page .details-btn{font-variation-settings: "ROND" 100}
+.post-card p{font-variation-settings: "wdth" 77, "GRAD" 100}
+.container h1{font-variation-settings: "ROND" 36, "wdth" 120}
+.existed{font-variation-settings: "wdth" 150;}
 
 .hero{padding:3rem 0;text-align:left}
 .hero h1{margin:0 0 .5rem;font-size:2rem}
@@ -84,8 +95,8 @@ body::before{
 .post-card{background:linear-gradient(180deg,rgba(255,255,255,0.12),rgba(255,255,255,0.04));backdrop-filter:blur(6px);padding:1rem;border-radius:12px;box-shadow:0 6px 18px rgba(2,6,23,0.12)}
 .post-card{transition:transform .25s ease, box-shadow .25s ease}
 .post-card:hover{transform:translateY(-6px);box-shadow:0 12px 30px rgba(2,6,23,0.18)}
-.post-card h2{margin:.25rem 0}
-.read-more{color:var(--muted);text-decoration:none;font-weight:600}
+.post-card h2{margin:.25rem 0;font-variation-settings: "ROND" 50}
+.read-more{color:var(--muted);text-decoration:none;font-weight:600;font-variation-settings: "wdth" 150;}
 
 .site-footer{padding:2rem 0;color:var(--muted)}
 
@@ -105,7 +116,7 @@ body::before{
 .profile-history-page .entry img{width:120px;height:120px;object-fit:cover;border-radius:50%;border:4px solid rgba(255,255,255,0.04);box-shadow:0 6px 18px rgba(2,6,23,0.5);cursor:auto;transition:box-shadow .18s}
 .profile-history-page .entry img:hover{box-shadow:0 10px 28px rgba(2,6,23,0.28)}
 .profile-history-page .entry .meta{margin-top:10px;color:var(--muted);font-size:0.9rem;text-align:center;padding:0 6px}
-.profile-history-page .details-btn{margin-top:8px;background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--muted);padding:.35rem .6rem;border-radius:8px;font-weight:600;cursor:pointer;transition:background .12s,transform .12s}
+.profile-history-page .details-btn{margin-top:8px;background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--muted);padding:.35rem .6rem;border-radius:8px;font-weight:600;cursor:pointer;transition:background .12s,transform .12s;font-family:var(--ui-font);font-size:inherit}
 .profile-history-page .details-btn:hover{background:rgba(255,255,255,0.02);transform:translateY(-2px)}
 
 /* Featured entry (make current avatar larger and more prominent) */
@@ -129,3 +140,27 @@ body::before{
 .profile-history-page .details-btn::before{content:"🔍";margin-right:8px}
 .profile-history-page .entry.featured .details-btn{background:linear-gradient(90deg,var(--g1, #6ee7b7),var(--g2, #a6c1ee));color:var(--text);border:0;box-shadow:0 8px 30px rgba(16,24,40,0.28)}
 .profile-history-page .entry.featured .details-btn::before{filter:brightness(0.95)}
+
+/* Download textbox + copy button */
+.download-box{display:flex;gap:8px;align-items:center;margin-top:8px}
+.download-input{flex:1;padding:.5rem .6rem;border-radius:8px;border:1px solid rgba(255,255,255,0.08);background:var(--card-bg);color:var(--text);font-family:var(--ui-font);font-size:0.95rem}
+.download-input:focus{outline:2px solid rgba(110,231,183,0.14)}
+.download-input[readonly]{opacity:1}
+.copy-btn{padding:.45rem .7rem;border-radius:8px;border:0;background:linear-gradient(90deg,var(--g1,#6ee7b7),var(--g2,#a6c1ee));color:var(--text);font-weight:700;cursor:pointer}
+.copy-btn:active{transform:translateY(1px)}
+.download-box .copy-btn[disabled]{opacity:.5;cursor:not-allowed}
+
+/* Download action button (used next to readonly link input) */
+.download-action{display:inline-block;padding:.45rem .7rem;border-radius:8px;border:0;background:linear-gradient(90deg,var(--g1,#6ee7b7),var(--g2,#a6c1ee));color:var(--text);font-weight:700;text-decoration:none}
+.download-action:active{transform:translateY(1px)}
+
+/* Per-pfp detail page layout */
+.pfp-page .post-card{display:flex;flex-direction:column;align-items:center;text-align:center}
+.pfp-page .post-card img{display:block;margin:0 auto}
+.description-box{width:100%;margin-top:12px}
+.description-box label{display:block;color:var(--muted);margin-bottom:6px;font-size:0.9rem}
+.description-input{width:100%;min-height:100px;padding:.6rem;border-radius:10px;border:1px solid rgba(255,255,255,0.06);background:var(--card-bg);color:var(--text);font-family:var(--ui-font);resize:vertical}
+.download-action{margin-top:10px;font-variation-settings: "ROND" 67, "wdth" 111;}
+
+.description-text{width:100%;min-height:100px;padding:.6rem;border-radius:10px;border:1px solid rgba(255,255,255,0.06);background:var(--card-bg);color:var(--text);font-family:var(--ui-font);white-space:pre-wrap}
+.description-text code{background:transparent;color:var(--muted);font-weight:600}
