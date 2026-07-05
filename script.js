@@ -107,5 +107,32 @@
   });
 })();
 
+// Animate profile-history dropdowns smoothly
+(function(){
+  const dropdowns = document.querySelectorAll('.pfp-group-dropdown');
+  if (!dropdowns.length) return;
+
+  dropdowns.forEach((details) => {
+    const inner = details.querySelector('.timeline-inner');
+    if (!inner) return;
+
+    const syncHeight = () => {
+      if (details.open) {
+        inner.style.maxHeight = `${inner.scrollHeight}px`;
+        inner.style.opacity = '1';
+        inner.style.transform = 'translateY(0)';
+      } else {
+        inner.style.maxHeight = '0px';
+        inner.style.opacity = '0';
+        inner.style.transform = 'translateY(-6px)';
+      }
+    };
+
+    syncHeight();
+    details.addEventListener('toggle', syncHeight);
+    window.addEventListener('resize', syncHeight);
+  });
+})();
+
 // Fill download inputs with absolute URLs and wire download buttons
 // No global download-input population — per-page links are static. Keep code minimal.
