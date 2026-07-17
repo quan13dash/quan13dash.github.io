@@ -13,9 +13,15 @@
     { light: ['#ffecd2', '#fcb69f'], dark: ['#0b1220', '#07203a'] },
     { light: ['#a1c4fd', '#c2e9fb'], dark: ['#0f2027', '#203a43'] },
     { light: ['#fddb92', '#d1fdff'], dark: ['#141e30', '#243b55'] },
-    { light: ['#f6d365', '#fda085'], dark: ['#0f2027', '#2c5364'] },
-    { light: ['#96fbc4', '#f9f586'], dark: ['#3a1c71', '#d76d77'] },
-    { light: ['#fbc2eb', '#a6c1ee'], dark: ['#0f0c29', '#302b63'] }
+    { light: ['#f6d365', '#fda085'], dark: ['#052e16', '#14532d'] },
+    { light: ['#96fbc4', '#f9f586'], dark: ['#022c22', '#34d399'] },
+    { light: ['#fbc2eb', '#a6c1ee'], dark: ['#0f0c29', '#302b63'] },
+    { light: ['#c2e9fb', '#a1c4fd'], dark: ['#111827', '#065f46'] },
+    { light: ['#ffafbd', '#ffc3a0'], dark: ['#1f2937', '#0f766e'] },
+    { light: ['#d4fc79', '#96e6a1'], dark: ['#052e16', '#166534'] },
+    { light: ['#ffffff', '#ffd3b6'], dark: ['#110c11', '#2e1c2b'] },
+    { light: ['#d4fc79', '#96e6a1'], dark: ['#000000', '#0a2f35'] },
+    { light: ['#a8e6cf', '#71c99f'], dark: ['#051c12', '#0d3826'] },
   ];
 
   let currentGradient = Math.floor(Math.random() * gradients.length);
@@ -34,7 +40,7 @@
     root.style.setProperty('--g2', colors[1]);
   }
 
-  function startGradientCycle(interval = 8000){
+  function startGradientCycle(interval = 5000){
     if (gradientTimer) clearInterval(gradientTimer);
     gradientTimer = setInterval(()=>{
       currentGradient = (currentGradient + 1) % gradients.length;
